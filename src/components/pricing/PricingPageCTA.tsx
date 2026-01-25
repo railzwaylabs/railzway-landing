@@ -22,7 +22,7 @@ function PricingPageCTA() {
               <Button as="a" href="#get-started">
                 {CTA.primary.getStarted}
               </Button>
-              <Button as="a" href="#docs" variant="secondary">
+              <Button as="a" href="/docs" variant="secondary">
                 {CTA.secondary.viewDocs}
               </Button>
             </div>

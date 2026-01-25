@@ -9,7 +9,7 @@ const breakdownCards = [
       "Track incoming usage with clear visibility into what is accepted and what is queued for the next window.",
     bullets: [
       "Metered events are ingested with schema validation",
-      "Usage summaries update in near real time",
+      "Usage summaries are derived from persisted events within the billing cycle",
       "Limits are visible before enforcement",
       "Audit trails remain accessible in history",
     ],

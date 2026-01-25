@@ -1,5 +1,5 @@
-import type { ReactElement, SVGProps } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import React, { type ReactElement, type SVGProps } from "react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
 import { defaultViewport, getSectionVariants } from "../lib/motion";
 
 type Feature = {
@@ -37,7 +37,7 @@ const features: Feature[] = [
   {
     title: "Pricing & Rating",
     description:
-      "Flexible models (Flat, Tiered, Hybrid) with real-time rating calculation.",
+      "Flexible models (Flat, Tiered, Hybrid) with deterministic rating calculation.",
     icon: (props) => (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...props}>
         <path d="M4 19V5" />
@@ -119,6 +119,73 @@ const features: Feature[] = [
   },
 ];
 
+const SpotlightCard = ({ feature, variants }: { feature: Feature, variants: Variants }) => {
+  const divRef = React.useRef<HTMLDivElement>(null);
+  const [position, setPosition] = React.useState({ x: 0, y: 0 });
+  const [opacity, setOpacity] = React.useState(0);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!divRef.current) return;
+    const div = divRef.current;
+    const rect = div.getBoundingClientRect();
+    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
+  const handleFocus = () => {
+    setOpacity(1);
+  };
+
+  const handleBlur = () => {
+    setOpacity(0);
+  };
+
+  const handleMouseEnter = () => {
+    setOpacity(1);
+  };
+
+  const handleMouseLeave = () => {
+    setOpacity(0);
+  };
+
+  return (
+    <motion.div
+      ref={divRef}
+      onMouseMove={handleMouseMove}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      variants={variants}
+      className="group relative h-full overflow-hidden rounded-2xl border border-border-subtle bg-bg-surface/30 p-6 transition duration-base ease-standard hover:-translate-y-1 hover:border-border-strong hover:bg-bg-surface/60"
+    >
+      <div
+        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
+        style={{
+          opacity,
+          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,.06), transparent 40%)`,
+        }}
+      />
+      <div className="relative z-10">
+        <div className="flex items-center justify-between">
+          <feature.icon
+            className="h-6 w-6 text-text-primary"
+            strokeWidth={1.5}
+          />
+          <span className="text-xs uppercase tracking-[0.2em] text-text-muted">
+            Railzway
+          </span>
+        </div>
+        <h3 className="mt-6 text-lg font-semibold text-text-primary">
+          {feature.title}
+        </h3>
+        <p className="mt-2 text-sm text-text-muted">
+          {feature.description}
+        </p>
+      </div>
+    </motion.div>
+  );
+};
+
 function Features() {
   const reducedMotion = useReducedMotion();
   const { container, item } = getSectionVariants(reducedMotion);
@@ -126,7 +193,7 @@ function Features() {
   return (
     <motion.section
       id="features"
-      className="py-20"
+      className="py-20 scroll-mt-24"
       variants={container}
       initial="hidden"
       whileInView="show"
@@ -151,27 +218,7 @@ function Features() {
           variants={container}
         >
           {features.map((feature) => (
-            <motion.div
-              key={feature.title}
-              variants={item}
-              className="group rounded-2xl border border-border-subtle bg-bg-surface/30 p-6 transition duration-base ease-standard hover:-translate-y-1 hover:border-border-strong hover:bg-bg-surface/60"
-            >
-              <div className="flex items-center justify-between">
-                <feature.icon
-                  className="h-6 w-6 text-text-primary"
-                  strokeWidth={1.5}
-                />
-                <span className="text-xs uppercase tracking-[0.2em] text-text-muted">
-                  Railzway
-                </span>
-              </div>
-              <h3 className="mt-6 text-lg font-semibold text-text-primary">
-                {feature.title}
-              </h3>
-              <p className="mt-2 text-sm text-text-muted">
-                {feature.description}
-              </p>
-            </motion.div>
+            <SpotlightCard key={feature.title} feature={feature} variants={item} />
           ))}
         </motion.div>
       </div>

@@ -9,7 +9,7 @@ const integrations = [
   {
     title: "Public Invoice Portal",
     description: "Secure public pages for customers to view and pay invoices.",
-    icon: (props: any) => (
+    icon: (props: React.SVGProps<SVGSVGElement>) => (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...props}>
         <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
         <line x1="3" y1="9" x2="21" y2="9" />
@@ -20,7 +20,7 @@ const integrations = [
   {
     title: "Admin Dashboard",
     description: "Control Plane UI for organization config, pricing plans, and analytics.",
-    icon: (props: any) => (
+    icon: (props: React.SVGProps<SVGSVGElement>) => (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...props}>
         <rect x="3" y="3" width="7" height="7" />
         <rect x="14" y="3" width="7" height="7" />
@@ -32,7 +32,7 @@ const integrations = [
   {
     title: "Telemetry",
     description: "Anonymous usage statistics collection for system health.",
-    icon: (props: any) => (
+    icon: (props: React.SVGProps<SVGSVGElement>) => (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...props}>
         <path d="M21.21 15.89A10 10 0 1 1 8 2.83" />
         <path d="M22 12A10 10 0 0 0 12 2v10z" />

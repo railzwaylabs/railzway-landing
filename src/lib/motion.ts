@@ -47,30 +47,30 @@ export const getSectionVariants = (reducedMotion: boolean | null) => {
       transition: prefersReducedMotion
         ? {}
         : {
-            staggerChildren: motionTokens.stagger,
-            delayChildren: motionTokens.delay,
-          },
+          staggerChildren: motionTokens.stagger,
+          delayChildren: motionTokens.delay,
+        },
     },
   };
 
   const item: Variants = prefersReducedMotion
     ? {
-        hidden: { opacity: 0 },
-        show: { opacity: 1, transition: baseTransition },
-      }
+      hidden: { opacity: 0 },
+      show: { opacity: 1, transition: baseTransition },
+    }
     : {
-        hidden: { opacity: 0, y: 18 },
-        show: {
-          opacity: 1,
-          y: 0,
-          transition: {
-            duration: motionTokens.durationSlow,
-            ease: motionTokens.easeStandard,
-          },
+      hidden: { opacity: 0, y: 18 },
+      show: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: motionTokens.durationSlow,
+          ease: motionTokens.easeStandard,
         },
-      };
+      },
+    };
 
   return { container, item };
 };
 
-export const defaultViewport = { once: true, amount: 0.35 };
+export const defaultViewport = { once: true, amount: 0.2 };

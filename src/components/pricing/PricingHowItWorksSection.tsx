@@ -1,7 +1,7 @@
 const steps = [
   {
     title: "Ingest & Meter",
-    desc: "Send raw usage events via API. We meter, aggregate, and validate against quotas in real-time.",
+    desc: "Send raw usage events via the HTTP API. We meter and aggregate them within explicit billing cycles.",
   },
   {
     title: "Rate & Invoice",
@@ -9,7 +9,7 @@ const steps = [
   },
   {
     title: "Sync & Collect",
-    desc: "Finalized invoices are synced to your payment provider or ledgers automatically.",
+    desc: "Finalized invoices can be synced to payment providers or ledgers via configured adapters.",
   },
 ];
 

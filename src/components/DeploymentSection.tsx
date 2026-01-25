@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "motion/react";
 import { defaultViewport, getSectionVariants } from "../lib/motion";
+import { githubUrl } from "../lib/env";
 import { Button, Surface } from "./ui";
 
 function DeploymentSection() {
@@ -40,7 +41,7 @@ function DeploymentSection() {
             </div>
 
             <div className="flex gap-4 pt-4">
-              <Button as="a" href="https://github.com/smallbiznis/railzway" variant="primary">
+              <Button as="a" href={githubUrl} variant="primary">
                 View Deployment Docs
               </Button>
             </div>
@@ -60,7 +61,7 @@ function DeploymentSection() {
                 <pre className="text-xs font-mono text-text-secondary leading-relaxed">
                   {`services:
   railzway:
-    image: ghcr.io/smallbiznis/railzway:latest
+    image: ghcr.io/railzwaylabs/railzway:latest
     container_name: railzway
     restart: unless-stopped
     ports:
