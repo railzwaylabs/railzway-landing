@@ -1,5 +1,5 @@
 
-import { Badge, Button } from "../ui";
+import { Button } from "../ui";
 
 const plans = [
   {
