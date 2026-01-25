@@ -1,3 +1,5 @@
+import { githubUrl } from "../lib/env";
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -7,6 +9,8 @@ export interface BlogPost {
   content: string; // Markdown string
   tags: string[];
 }
+
+const usageModelSourceUrl = `${githubUrl}/blob/main/internal/usage/domain/models.go`;
 
 export const posts: BlogPost[] = [
   {
@@ -44,7 +48,7 @@ Railzway is Open Source. You don't have to take our word for it—you can verify
 
 Take our **Usage Event Model** as an example. Every event uses a \`Snowflake ID\` for sortable uniqueness and enforcing an \`IdempotencyKey\` at the database level.
 
-[View Source on GitHub](https://github.com/smallbiznis/railzway/blob/main/internal/usage/domain/models.go)
+[View Source on GitHub](${usageModelSourceUrl})
 
 \`\`\`go
 // UsageEvent stores a single unit of metered activity.

@@ -95,9 +95,6 @@ function PricingPlansSection() {
     <section className="py-24">
       <div className="mx-auto w-full max-w-7xl px-6">
         <div className="mx-auto max-w-3xl space-y-4 text-center">
-          <Badge variant="neutral" size="sm" className="font-mono">
-            v2.4 stable
-          </Badge>
           <h1 className="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
             Usage-based billing infrastructure.
           </h1>
@@ -195,7 +192,7 @@ function PricingPlansSection() {
                   <Button
                     as="a"
                     href="#get-started"
-                    variant={plan.ctaVariant as any}
+                    variant={plan.ctaVariant as "primary" | "secondary" | "outline" | "ghost"}
                     className="w-full justify-center"
                     size="sm"
                   >

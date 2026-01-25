@@ -1,60 +1,47 @@
-import type { ComponentPropsWithoutRef, ElementType } from "react";
-import { cn } from "../../lib/cn";
+import { type ButtonHTMLAttributes, forwardRef } from "react";
+import { cn } from "../../lib/utils";
+import { Loader2 } from "lucide-react";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
-type ButtonSize = "sm" | "md" | "lg";
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "primary" | "secondary" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg";
+  isLoading?: boolean;
+  as?: React.ElementType;
+  href?: string;
+}
 
-type ButtonProps<C extends ElementType = "button"> = {
-  as?: C;
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-} & Omit<ComponentPropsWithoutRef<C>, "as">;
-
-const variantClasses: Record<ButtonVariant, string> = {
-  primary:
-    "bg-accent-primary text-text-inverse hover:bg-accent-glow focus-visible:ring-accent-primary/50",
-  secondary:
-    "border border-border-strong bg-bg-surface text-text-primary hover:border-border-strong/80 hover:bg-bg-surface-strong focus-visible:ring-accent-primary/40",
-  ghost:
-    "text-text-primary hover:bg-bg-surface/60 focus-visible:ring-accent-primary/30",
-};
-
-const sizeClasses: Record<ButtonSize, string> = {
-  sm: "px-3 py-1.5 text-xs",
-  md: "px-5 py-2.5 text-sm",
-  lg: "px-6 py-3 text-base",
-};
-
-const Button = <C extends ElementType = "button">({
-  as,
-  variant = "primary",
-  size = "md",
-  className,
-  ...props
-}: ButtonProps<C>) => {
-  const Component = as ?? "button";
-  const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition duration-base ease-standard focus-visible:outline-none focus-visible:ring-2",
-    variantClasses[variant],
-    sizeClasses[size],
-    className,
-  );
-  const componentProps = {
-    className: classes,
-    ...props,
-  } as ComponentPropsWithoutRef<C>;
-
-  if (Component === "button") {
-    const buttonProps =
-      componentProps as ComponentPropsWithoutRef<"button"> & {
-        type?: "button" | "submit" | "reset";
-      };
-    if (!buttonProps.type) {
-      buttonProps.type = "button";
-    }
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant = "primary", size = "md", isLoading, children, as: Component = "button", ...props }, ref) => {
+    return (
+      <Component
+        ref={ref}
+        className={cn(
+          "inline-flex items-center justify-center rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-white",
+          {
+            "bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-500 shadow-sm":
+              variant === "primary",
+            "bg-white text-slate-900 border border-slate-200 hover:bg-slate-50 focus:ring-slate-200":
+              variant === "secondary",
+            "bg-transparent border border-slate-200 text-slate-700 hover:bg-slate-50":
+              variant === "outline",
+            "bg-transparent text-slate-600 hover:bg-slate-100":
+              variant === "ghost",
+            "h-8 px-3 text-sm": size === "sm",
+            "h-10 px-4 py-2": size === "md",
+            "h-12 px-6 text-lg": size === "lg",
+          },
+          className
+        )}
+        disabled={isLoading || props.disabled}
+        {...props}
+      >
+        {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+        {children}
+      </Component>
+    );
   }
+);
 
-  return <Component {...componentProps} />;
-};
+Button.displayName = "Button";
 
-export default Button;
+export { Button };

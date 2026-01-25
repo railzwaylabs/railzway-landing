@@ -37,7 +37,7 @@ function CTA() {
               <Button as="a" href="https://railzway.com/signup">
                 {CTA_LABELS.primary.getStarted}
               </Button>
-              <Button as="a" href="#docs" variant="secondary">
+              <Button as="a" href="/docs" variant="secondary">
                 {CTA_LABELS.secondary.viewDocs}
               </Button>
             </div>
