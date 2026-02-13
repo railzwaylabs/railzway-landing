@@ -22,7 +22,7 @@ export function DeveloperExperience() {
               </div>
               <div>
                 <h4 className="text-white font-medium mb-1">API-First Design</h4>
-                <p className="text-slate-500 text-sm">Documented HTTP API with deterministic billing behavior.</p>
+                <p className="text-slate-500 text-sm">Documented HTTP API with predictable billing behavior.</p>
               </div>
             </div>
             <div className="flex items-start gap-4">

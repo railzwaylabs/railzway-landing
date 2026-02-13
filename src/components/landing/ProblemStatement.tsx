@@ -13,7 +13,7 @@ const problems = [
     icon: FileQuestion,
     title: "Phantom Churn",
     description:
-      "Non-deterministic invoices erode trust. If a customer asks 'why is my bill higher?', you can't trace it back to the event.",
+      "Inconsistent invoices erode trust. If a customer asks 'why is my bill higher?', you can't trace it back to the event.",
   },
   {
     icon: LockKeyhole,

@@ -7,7 +7,7 @@ const models = [
   {
     title: "Usage-Based Billing",
     icon: Zap,
-    description: "Ingest 10k events/sec. Aggregate by sum, max, unique count, or custom SQL.",
+    description: "Ingest usage events and aggregate them per billing cycle.",
     useCase: "API calls, GB stored",
     color: "indigo",
     className: "lg:col-span-2",
@@ -22,7 +22,7 @@ const models = [
   {
     title: "Flat Subscriptions",
     icon: Calendar,
-    description: "Handle upgrades, downgrades, and cancellations with automatic to-the-second proration.",
+    description: "Handle upgrades, downgrades, and cancellations with proration support.",
     useCase: "Monthly retainers",
     color: "blue",
     className: "",

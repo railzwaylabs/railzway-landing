@@ -9,6 +9,7 @@ import { TrustBadges } from "./components/landing/TrustBadges";
 import { ComparisonTable } from "./components/landing/ComparisonTable";
 import PricingPage from "./pages/PricingPage";
 import DeploymentPage from "./pages/DeploymentPage";
+import ContactPage from "./pages/ContactPage";
 import { DocsLayout } from "./layouts/DocsLayout";
 import { DocsOverviewPage } from "./pages/docs/DocsOverviewPage";
 import { DocsGettingStartedPage } from "./pages/docs/DocsGettingStartedPage";
@@ -29,6 +30,10 @@ function App() {
 
   if (normalizedPath === "/deployment") {
     return <DeploymentPage />;
+  }
+
+  if (normalizedPath === "/contact") {
+    return <ContactPage />;
   }
 
   if (normalizedPath.startsWith("/docs")) {

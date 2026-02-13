@@ -16,7 +16,7 @@ interface LandingLayoutProps {
 
 export function LandingLayout({ children }: LandingLayoutProps) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
+
   useEffect(() => {
     const checkLogin = () => {
       const hasCookie = document.cookie
@@ -46,8 +46,8 @@ export function LandingLayout({ children }: LandingLayoutProps) {
           <div className="flex items-center gap-4">
             {isLoggedIn ? (
               <Button as="a" href={`${import.meta.env.VITE_SITE_URL}/dashboard`} size="sm">
-                            Go to Dashboard
-                          </Button>
+                Go to Dashboard
+              </Button>
             ) : (
               <>
                 <Button as="a" href={loginUrl} variant="ghost" size="sm" className="hidden md:flex">
@@ -97,6 +97,7 @@ export function LandingLayout({ children }: LandingLayoutProps) {
                 <li><a href={githubIssuesUrl} className="hover:text-indigo-600">Community</a></li>
                 <li><a href={githubUrl} className="hover:text-indigo-600">GitHub</a></li>
                 <li><a href={supportMailto} className="hover:text-indigo-600">Support</a></li>
+                <li><a href="/contact" className="hover:text-indigo-600">Contact Us</a></li>
                 <li><a href={salesMailto} className="hover:text-indigo-600">Contact Sales</a></li>
               </ul>
             </div>

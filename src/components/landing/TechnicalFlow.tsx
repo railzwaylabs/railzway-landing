@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 const steps = [
   { number: "01", title: "Ingest", desc: "Send raw events via the HTTP API" },
   { number: "02", title: "Meter", desc: "Aggregate usage within a billing cycle" },
-  { number: "03", title: "Rate", desc: "Apply versioned pricing rules deterministically" },
+  { number: "03", title: "Rate", desc: "Apply versioned pricing rules consistently" },
   { number: "04", title: "Invoice", desc: "Produce invoices that can be explained and replayed" }
 ];
 

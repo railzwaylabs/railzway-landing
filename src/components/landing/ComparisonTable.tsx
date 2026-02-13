@@ -25,7 +25,7 @@ const rows: Row[] = [
     cloud: "check",
   },
   {
-    feature: "Deterministic aggregation",
+    feature: "Reproducible aggregation",
     oss: "check",
     pro: "check",
     cloud: "check",
@@ -55,7 +55,7 @@ const rows: Row[] = [
     cloud: "check",
   },
   {
-    feature: "Immutable audit trail",
+    feature: "Audit trail",
     oss: "check",
     pro: "check",
     cloud: "check",
@@ -122,9 +122,13 @@ const rows: Row[] = [
   },
 ];
 
-const baseCellClasses = "px-6 py-4 text-center border-l border-slate-200";
+const baseCellClasses = "px-6 py-4 text-center border-l border-slate-200 min-w-[170px]";
 const proCellClasses = `${baseCellClasses} bg-amber-50/10`;
 const cloudCellClasses = `${baseCellClasses} bg-indigo-50/10`;
+const featureHeaderClasses =
+  "px-6 py-4 font-semibold text-left min-w-[220px] sticky left-0 z-30 bg-slate-50 border-r border-slate-200";
+const featureCellClasses =
+  "px-6 py-4 font-medium text-slate-700 sticky left-0 z-20 bg-white border-r border-slate-200";
 
 function renderCell(value: Availability, className: string, emphasis?: "pro" | "cloud") {
   if (value === "check") {
@@ -163,36 +167,40 @@ export function ComparisonTable() {
         </p>
       </div>
 
-      <div className="rounded-2xl border border-slate-200 overflow-hidden">
-        <table className="w-full text-sm text-left">
-          <thead className="bg-slate-50 text-slate-900 border-b border-slate-200">
+      <div className="rounded-2xl border border-slate-200 overflow-hidden relative">
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-white to-transparent md:hidden" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white to-transparent md:hidden" />
+        <div className="overflow-x-auto">
+          <table className="min-w-[760px] w-full text-sm text-left">
+            <thead className="bg-slate-50 text-slate-900 border-b border-slate-200 sticky top-0 z-20">
             <tr>
-              <th className="px-6 py-4 font-semibold w-1/4">Feature</th>
-              <th className="px-6 py-4 font-semibold text-center w-1/4 border-l border-slate-200">
+              <th className={featureHeaderClasses}>Feature</th>
+              <th className="px-6 py-4 font-semibold text-center border-l border-slate-200 min-w-[170px]">
                 Community OSS
               </th>
-              <th className="px-6 py-4 font-semibold text-center w-1/4 border-l border-slate-200 bg-amber-50/50 text-amber-900">
+              <th className="px-6 py-4 font-semibold text-center border-l border-slate-200 min-w-[170px] bg-amber-50/50 text-amber-900">
                 Self-Hosted Pro
               </th>
-              <th className="px-6 py-4 font-semibold text-center w-1/4 border-l border-slate-200 bg-indigo-50/50 text-indigo-900">
+              <th className="px-6 py-4 font-semibold text-center border-l border-slate-200 min-w-[170px] bg-indigo-50/50 text-indigo-900">
                 Railzway Cloud{" "}
                 <span className="block text-xs font-normal text-indigo-700 mt-1">
                   (Coming Soon)
                 </span>
               </th>
             </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-200">
-            {rows.map((row) => (
-              <tr key={row.feature}>
-                <td className="px-6 py-4 font-medium text-slate-700">{row.feature}</td>
-                {renderCell(row.oss, baseCellClasses)}
-                {renderCell(row.pro, proCellClasses, "pro")}
-                {renderCell(row.cloud, cloudCellClasses, "cloud")}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="divide-y divide-slate-200 bg-white">
+              {rows.map((row) => (
+                <tr key={row.feature}>
+                  <td className={featureCellClasses}>{row.feature}</td>
+                  {renderCell(row.oss, baseCellClasses)}
+                  {renderCell(row.pro, proCellClasses, "pro")}
+                  {renderCell(row.cloud, cloudCellClasses, "cloud")}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div className="mt-24 bg-indigo-900 rounded-3xl p-8 md:p-16 text-center text-white relative overflow-hidden">

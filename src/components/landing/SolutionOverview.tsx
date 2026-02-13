@@ -16,18 +16,18 @@ export function SolutionOverview() {
             <div className="rounded-full bg-indigo-50 w-12 h-12 flex items-center justify-center text-indigo-600 mb-6">
               <ShieldCheck className="h-6 w-6" />
             </div>
-            <h3 className="text-3xl font-bold text-slate-900 mb-4">Immutable by Design.</h3>
+            <h3 className="text-3xl font-bold text-slate-900 mb-4">Reproducible by Design.</h3>
             <p className="text-lg text-slate-600 leading-relaxed mb-6">
-              Once a rating result is calculated, it's locked. Reprint invoices from 3 years ago with byte-for-byte exactness. Railzway treats billing as a deterministic pipeline, not a series of mutable scripts.
+              Rating results are derived from stored inputs. Re-generate invoices from the same usage, prices, and cycles to explain changes over time. Railzway treats billing as a reproducible pipeline, not a series of mutable scripts.
             </p>
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-slate-700">
                 <span className="h-2 w-2 rounded-full bg-green-500"></span>
-                Ledger-based architecture
+                Stored usage events and rating outputs
               </li>
               <li className="flex items-center gap-3 text-slate-700">
                 <span className="h-2 w-2 rounded-full bg-green-500"></span>
-                Audit trail for every change
+                Audit trail for core billing actions
               </li>
             </ul>
           </motion.div>
@@ -50,11 +50,11 @@ export function SolutionOverview() {
                 </div>
                 <div className="p-6 font-mono text-sm space-y-4">
                   <div>
-                    <div className="text-slate-400"># Invoice ledger entry</div>
-                    <div className="text-indigo-600">const invoice = await ledger.finalize(cycle_id);</div>
+                    <div className="text-slate-400"># Invoice snapshot</div>
+                    <div className="text-indigo-600">const invoice = await billing.finalize(cycle_id);</div>
                   </div>
                   <div className="pl-4 border-l-2 border-indigo-100">
-                    <div className="text-slate-400">// Result is frozen</div>
+                    <div className="text-slate-400">// Result is stored</div>
                     <div className="text-slate-900">invoice.status: <span className="text-green-600">"FINALIZED"</span></div>
                     <div className="text-slate-900">invoice.total: <span className="text-purple-600">45000</span></div>
                     <div className="text-slate-900">invoice.hash: <span className="text-slate-500">"sha256:8f9a..."</span></div>
