@@ -12,7 +12,8 @@ export function DeveloperExperience() {
             Built for your <span className="text-indigo-400">terminal</span>, not just your finance team.
           </h2>
           <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-            Railzway integrates over HTTP with explicit billing primitives. The OpenAPI spec evolves alongside the API.
+            Railzway exposes a public HTTP API for runtime billing operations. Today that surface covers
+            usage ingestion, customers, subscriptions, invoices, and entitlement checks.
           </p>
 
           <div className="flex flex-col gap-4">
@@ -22,7 +23,7 @@ export function DeveloperExperience() {
               </div>
               <div>
                 <h4 className="text-white font-medium mb-1">API-First Design</h4>
-                <p className="text-slate-500 text-sm">HTTP API with stable primitives and clear payload shapes.</p>
+                <p className="text-slate-500 text-sm">Usage, customer, subscription, invoice, and entitlement flows over HTTP.</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -30,8 +31,8 @@ export function DeveloperExperience() {
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
               </div>
               <div>
-                <h4 className="text-white font-medium mb-1">OpenAPI Contract</h4>
-                <p className="text-slate-500 text-sm">Generate clients from the spec as it matures.</p>
+                <h4 className="text-white font-medium mb-1">Config + Runtime Split</h4>
+                <p className="text-slate-500 text-sm">Billing configuration lives in the engine and admin surface. Public API is for operational traffic.</p>
               </div>
             </div>
           </div>
@@ -54,11 +55,14 @@ export function DeveloperExperience() {
             <div className="p-6 overflow-x-auto">
               <pre className="font-mono text-sm leading-relaxed">
                 <code className="text-slate-300">
-                  <span className="text-slate-500">// Report usage via HTTP API</span>
+                  <span className="text-slate-500">// Report usage via the public API</span>
                   {"\n"}
                   <span className="text-purple-400">await</span> <span className="text-yellow-400">fetch</span>(<span className="text-green-400">"/api/v1/usage-events"</span>, {"{"}
                   {"\n"}  method: <span className="text-green-400">"POST"</span>,
-                  {"\n"}  headers: {"{"} <span className="text-green-400">"Content-Type"</span>: <span className="text-green-400">"application/json"</span> {"}"},
+                  {"\n"}  headers: {"{"}
+                  {"\n"}    <span className="text-green-400">"Content-Type"</span>: <span className="text-green-400">"application/json"</span>,
+                  {"\n"}    <span className="text-green-400">"X-API-Key"</span>: <span className="text-green-400">process.env.RAILZWAY_API_KEY</span>
+                  {"\n"}  {"}"},
                   {"\n"}  body: <span className="text-yellow-400">JSON</span>.<span className="text-yellow-400">stringify</span>({"{"}
                   {"\n"}    customer_id: <span className="text-green-400">"cus_123"</span>,
                   {"\n"}    subscription_id: <span className="text-green-400">"sub_123"</span>,

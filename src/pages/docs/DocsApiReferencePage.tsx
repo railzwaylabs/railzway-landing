@@ -1,13 +1,11 @@
 import { apiReferenceJsonUrl, apiReferenceUrl } from "../../lib/env";
 
 const endpointGroups = [
-  { label: "Products", path: "/api/products" },
-  { label: "Prices", path: "/api/prices" },
-  { label: "Meters", path: "/api/meters" },
-  { label: "Subscriptions", path: "/api/subscriptions" },
-  { label: "Usage ingestion", path: "/api/usage" },
-  { label: "Invoices", path: "/api/invoices" },
-  { label: "Customers", path: "/api/customers" },
+  { label: "Usage events", path: "/api/v1/usage-events" },
+  { label: "Customers", path: "/api/v1/customers" },
+  { label: "Subscriptions", path: "/api/v1/subscriptions" },
+  { label: "Invoices", path: "/api/v1/invoices" },
+  { label: "Entitlement checks", path: "/api/v1/customers/:customer_id/entitlements/:feature_code" },
 ];
 
 export function DocsApiReferencePage() {
@@ -18,15 +16,17 @@ export function DocsApiReferencePage() {
           API Reference
         </h1>
         <p className="max-w-3xl text-lg leading-relaxed text-slate-600">
-          The OpenAPI specification is the canonical reference for endpoints, request shapes, and
-          response contracts.
+          The OpenAPI specification is the canonical reference for the public API: runtime billing
+          operations such as usage ingestion, customer lifecycle, subscriptions, invoices, and
+          entitlement checks.
         </p>
       </div>
 
       <section className="rounded-2xl border border-slate-200 bg-white p-6">
         <h2 className="text-xl font-semibold text-slate-900">OpenAPI source of truth</h2>
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          Base path in the spec is <code>/api</code>. Use the files below as the definitive contract.
+          Base path in the current public API is <code>/api/v1</code>. Use the files below as the
+          definitive contract for exposed endpoints and payloads.
         </p>
         <div className="mt-4 flex flex-wrap gap-2">
           <a
@@ -46,6 +46,10 @@ export function DocsApiReferencePage() {
 
       <section className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
         <h2 className="text-xl font-semibold text-slate-900">Key endpoint groups</h2>
+        <p className="mt-2 text-sm leading-relaxed text-slate-600">
+          Billing configuration primitives such as products, plans, prices, and meters are part of
+          the engine, but they are not yet part of the external public API surface.
+        </p>
         <ul className="mt-3 space-y-2 text-sm text-slate-700">
           {endpointGroups.map((group) => (
             <li key={group.path} className="flex items-center justify-between gap-4 rounded-lg bg-white px-4 py-3">
@@ -58,4 +62,3 @@ export function DocsApiReferencePage() {
     </div>
   );
 }
-

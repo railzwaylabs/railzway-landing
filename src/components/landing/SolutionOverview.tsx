@@ -50,12 +50,12 @@ export function SolutionOverview() {
                 </div>
                 <div className="p-6 font-mono text-sm space-y-4">
                   <div>
-                    <div className="text-slate-400"># Invoice snapshot</div>
-                    <div className="text-indigo-600">const invoice = await billing.preview(cycle_id);</div>
+                    <div className="text-slate-400"># Read a generated invoice</div>
+                    <div className="text-indigo-600">GET /api/v1/invoices/:invoice_id</div>
                   </div>
                   <div className="pl-4 border-l-2 border-indigo-100">
-                    <div className="text-slate-400">// Result can be stored</div>
-                    <div className="text-slate-900">invoice.status: <span className="text-green-600">"DRAFT"</span></div>
+                    <div className="text-slate-400">// Public API returns stored billing output</div>
+                    <div className="text-slate-900">invoice.status: <span className="text-green-600">"open"</span></div>
                     <div className="text-slate-900">invoice.total: <span className="text-purple-600">45000</span></div>
                   </div>
                 </div>

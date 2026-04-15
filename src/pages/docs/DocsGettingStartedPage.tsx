@@ -13,8 +13,8 @@ export function DocsGettingStartedPage() {
           Getting Started
         </h1>
         <p className="max-w-3xl text-lg leading-relaxed text-slate-600">
-          The goal is simple: define billing primitives, ingest usage with idempotency, and let the
-          engine compute billing results consistently over time.
+          Start by configuring billing primitives in Railzway, then use the public API to create
+          customers, attach subscriptions, ingest usage, and retrieve invoices consistently over time.
         </p>
       </div>
 
@@ -26,9 +26,9 @@ export function DocsGettingStartedPage() {
             <p className="mt-1 text-sm text-slate-600">The thing you sell.</p>
           </div>
           <div className="rounded-xl border border-slate-200 bg-white p-4">
-            <p className="font-semibold text-slate-900">Price</p>
+            <p className="font-semibold text-slate-900">Plan Price</p>
             <p className="mt-1 text-sm text-slate-600">
-              The rating rules: flat, tiered, or hybrid.
+              The pricing rules that map recurring and usage charges to a plan.
             </p>
           </div>
           <div className="rounded-xl border border-slate-200 bg-white p-4">
@@ -50,9 +50,9 @@ export function DocsGettingStartedPage() {
             </p>
           </div>
           <div className="rounded-xl border border-slate-200 bg-white p-4">
-            <p className="font-semibold text-slate-900">Payment</p>
+            <p className="font-semibold text-slate-900">Entitlement</p>
             <p className="mt-1 text-sm text-slate-600">
-              Orchestrated by Railzway, processed by external providers.
+              A runtime check that answers whether a customer should have access to a feature.
             </p>
           </div>
         </div>
@@ -61,15 +61,16 @@ export function DocsGettingStartedPage() {
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold text-slate-900">Minimal happy path</h2>
         <ol className="list-decimal space-y-2 pl-5 text-slate-700">
-          <li>Create a product.</li>
-          <li>Create a meter that matches your usage signal.</li>
-          <li>Create a price that references that meter.</li>
-          <li>Create a subscription for a real customer.</li>
-          <li>Ingest usage with an idempotency key.</li>
-          <li>Allow the billing cycle to evaluate and produce invoices.</li>
+          <li>Configure products, plans, prices, meters, and features in the engine or admin surface.</li>
+          <li>Create a customer via <code>/api/v1/customers</code>.</li>
+          <li>Create a subscription via <code>/api/v1/subscriptions</code>.</li>
+          <li>Ingest usage with an idempotency key via <code>/api/v1/usage-events</code>.</li>
+          <li>Read invoices via <code>/api/v1/invoices</code>.</li>
+          <li>Check access decisions via <code>/api/v1/customers/:customer_id/entitlements/:feature_code</code>.</li>
         </ol>
         <p className="text-sm text-slate-600">
-          Endpoint shapes and required fields are defined in the OpenAPI spec.
+          Public API endpoint shapes and required fields are defined in the OpenAPI spec. Billing
+          configuration itself is not yet exposed through the public API.
         </p>
       </section>
 
@@ -81,6 +82,7 @@ export function DocsGettingStartedPage() {
         <div className="rounded-xl border border-slate-200 bg-slate-950 p-4 text-sm text-white">
           <pre className="overflow-x-auto">
             <code>{`curl -X POST "https://your-railzway.example.com/api/v1/usage-events" \\
+  -H "X-API-Key: $RAILZWAY_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
     "customer_id": "cus_123",
@@ -93,7 +95,8 @@ export function DocsGettingStartedPage() {
           </pre>
         </div>
         <p className="text-sm text-slate-600">
-          Use stable idempotency keys. Replays should be safe and yield the same result.
+          Use stable idempotency keys. Replays should be safe and yield the same result. Public API
+          requests are authenticated with an API key.
         </p>
       </section>
 
