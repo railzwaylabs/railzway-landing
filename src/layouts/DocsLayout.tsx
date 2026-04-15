@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 import { Button } from "../components/ui/Button";
 import { cn } from "../lib/utils";
-import { githubUrl, salesMailto, supportMailto } from "../lib/env";
+import { githubUrl, supportMailto } from "../lib/env";
 
 interface DocsLayoutProps {
   children: ReactNode;
@@ -14,10 +14,6 @@ const docsNav = [
   { href: "/docs/getting-started", label: "Getting Started" },
   { href: "/docs/concepts", label: "Concepts" },
   { href: "/docs/architecture", label: "Architecture" },
-  { href: "/docs/api-reference", label: "API Reference" },
-  { href: "/docs/integrations", label: "Integrations" },
-  { href: "/docs/security", label: "Security" },
-  { href: "/docs/changelog", label: "Changelog" },
 ];
 
 const isActive = (href: string, currentPath: string, exact?: boolean) => {
@@ -79,20 +75,11 @@ export function DocsLayout({ children, currentPath }: DocsLayoutProps) {
             <a className="hover:text-indigo-600" href="/docs">
               Docs
             </a>
-            <a className="hover:text-indigo-600" href="/docs/api-reference">
-              API Reference
-            </a>
-            <a className="hover:text-indigo-600" href="/docs/security">
-              Security
-            </a>
             <a className="hover:text-indigo-600" href={githubUrl}>
               GitHub
             </a>
             <a className="hover:text-indigo-600" href={supportMailto}>
               Support
-            </a>
-            <a className="hover:text-indigo-600" href={salesMailto}>
-              Contact Sales
             </a>
           </div>
         </div>

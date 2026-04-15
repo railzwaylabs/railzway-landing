@@ -14,7 +14,7 @@ export function DocsGettingStartedPage() {
         </h1>
         <p className="max-w-3xl text-lg leading-relaxed text-slate-600">
           The goal is simple: define billing primitives, ingest usage with idempotency, and let the
-          engine compute invoices deterministically.
+          engine compute billing results consistently over time.
         </p>
       </div>
 
@@ -76,14 +76,15 @@ export function DocsGettingStartedPage() {
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold text-slate-900">Concrete example: ingest usage</h2>
         <p className="text-slate-600">
-          This example uses the documented usage ingestion endpoint: <code>/api/usage</code>.
+          This example uses the documented usage ingestion endpoint: <code>/api/v1/usage-events</code>.
         </p>
         <div className="rounded-xl border border-slate-200 bg-slate-950 p-4 text-sm text-white">
           <pre className="overflow-x-auto">
-            <code>{`curl -X POST "https://your-railzway.example.com/api/usage" \\
+            <code>{`curl -X POST "https://your-railzway.example.com/api/v1/usage-events" \\
   -H "Content-Type: application/json" \\
   -d '{
     "customer_id": "cus_123",
+    "subscription_id": "sub_123",
     "meter_code": "api_calls",
     "idempotency_key": "evt-2026-01-25-0001",
     "recorded_at": "2026-01-25T10:00:00Z",
@@ -119,4 +120,3 @@ export function DocsGettingStartedPage() {
     </div>
   );
 }
-

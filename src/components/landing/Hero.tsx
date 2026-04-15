@@ -21,7 +21,7 @@ export function Hero() {
               Billing that adapts to how your product <span className="text-indigo-600">actually charges</span>.
             </h1>
             <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-lg">
-              The open-source billing engine for subscription and usage pricing. Turn usage events into invoices at the end of each billing cycle—without platform lock-in.
+              The open-source billing engine for subscription and usage pricing. Ingest usage, aggregate it, and prepare invoice-ready results as your pipeline evolves—without platform lock-in.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button as="a" href="/docs/getting-started" size="lg" className="gap-2 group">
@@ -42,11 +42,11 @@ export function Hero() {
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-indigo-600" />
-                Deduplicated Events
+                Idempotent Ingestion
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-indigo-600" />
-                Audit Ready
+                Audit Logs
               </div>
             </div>
           </motion.div>
@@ -68,7 +68,7 @@ export function Hero() {
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-slate-900">Usage Events</div>
-                  <div className="text-xs text-slate-500 font-mono mt-1">POST /api/usage</div>
+                  <div className="text-xs text-slate-500 font-mono mt-1">POST /api/v1/usage-events</div>
                 </div>
                 <div className="ml-auto text-xs px-2 py-1 bg-green-50 text-green-700 rounded-full font-medium">Ingest</div>
               </div>

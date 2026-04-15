@@ -12,7 +12,7 @@ export function DeveloperExperience() {
             Built for your <span className="text-indigo-400">terminal</span>, not just your finance team.
           </h2>
           <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-            Railzway is integrated over HTTP with explicit billing primitives. The OpenAPI contract is the source of truth.
+            Railzway integrates over HTTP with explicit billing primitives. The OpenAPI spec evolves alongside the API.
           </p>
 
           <div className="flex flex-col gap-4">
@@ -22,7 +22,7 @@ export function DeveloperExperience() {
               </div>
               <div>
                 <h4 className="text-white font-medium mb-1">API-First Design</h4>
-                <p className="text-slate-500 text-sm">Documented HTTP API with predictable billing behavior.</p>
+                <p className="text-slate-500 text-sm">HTTP API with stable primitives and clear payload shapes.</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -31,7 +31,7 @@ export function DeveloperExperience() {
               </div>
               <div>
                 <h4 className="text-white font-medium mb-1">OpenAPI Contract</h4>
-                <p className="text-slate-500 text-sm">Generate clients from the spec or call the API directly.</p>
+                <p className="text-slate-500 text-sm">Generate clients from the spec as it matures.</p>
               </div>
             </div>
           </div>
@@ -56,11 +56,12 @@ export function DeveloperExperience() {
                 <code className="text-slate-300">
                   <span className="text-slate-500">// Report usage via HTTP API</span>
                   {"\n"}
-                  <span className="text-purple-400">await</span> <span className="text-yellow-400">fetch</span>(<span className="text-green-400">"/api/usage"</span>, {"{"}
+                  <span className="text-purple-400">await</span> <span className="text-yellow-400">fetch</span>(<span className="text-green-400">"/api/v1/usage-events"</span>, {"{"}
                   {"\n"}  method: <span className="text-green-400">"POST"</span>,
                   {"\n"}  headers: {"{"} <span className="text-green-400">"Content-Type"</span>: <span className="text-green-400">"application/json"</span> {"}"},
                   {"\n"}  body: <span className="text-yellow-400">JSON</span>.<span className="text-yellow-400">stringify</span>({"{"}
                   {"\n"}    customer_id: <span className="text-green-400">"cus_123"</span>,
+                  {"\n"}    subscription_id: <span className="text-green-400">"sub_123"</span>,
                   {"\n"}    meter_code: <span className="text-green-400">"api_calls"</span>,
                   {"\n"}    idempotency_key: <span className="text-green-400">"evt-2026-01-26-0001"</span>,
                   {"\n"}    recorded_at: <span className="text-purple-400">new</span> <span className="text-yellow-400">Date</span>().<span className="text-yellow-400">toISOString</span>(),

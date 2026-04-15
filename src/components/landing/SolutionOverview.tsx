@@ -16,9 +16,9 @@ export function SolutionOverview() {
             <div className="rounded-full bg-indigo-50 w-12 h-12 flex items-center justify-center text-indigo-600 mb-6">
               <ShieldCheck className="h-6 w-6" />
             </div>
-            <h3 className="text-3xl font-bold text-slate-900 mb-4">Reproducible by Design.</h3>
+            <h3 className="text-3xl font-bold text-slate-900 mb-4">Traceable by Design.</h3>
             <p className="text-lg text-slate-600 leading-relaxed mb-6">
-              Rating results are derived from stored inputs. Re-generate invoices from the same usage, prices, and cycles to explain changes over time. Railzway treats billing as a reproducible pipeline, not a series of mutable scripts.
+              Billing results are derived from stored inputs and audit logs. When needed, you can re-run billing from the same usage, prices, and cycles to explain outcomes over time. Railzway treats billing as an explicit pipeline, not a series of mutable scripts.
             </p>
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-slate-700">
@@ -51,13 +51,12 @@ export function SolutionOverview() {
                 <div className="p-6 font-mono text-sm space-y-4">
                   <div>
                     <div className="text-slate-400"># Invoice snapshot</div>
-                    <div className="text-indigo-600">const invoice = await billing.finalize(cycle_id);</div>
+                    <div className="text-indigo-600">const invoice = await billing.preview(cycle_id);</div>
                   </div>
                   <div className="pl-4 border-l-2 border-indigo-100">
-                    <div className="text-slate-400">// Result is stored</div>
-                    <div className="text-slate-900">invoice.status: <span className="text-green-600">"FINALIZED"</span></div>
+                    <div className="text-slate-400">// Result can be stored</div>
+                    <div className="text-slate-900">invoice.status: <span className="text-green-600">"DRAFT"</span></div>
                     <div className="text-slate-900">invoice.total: <span className="text-purple-600">45000</span></div>
-                    <div className="text-slate-900">invoice.hash: <span className="text-slate-500">"sha256:8f9a..."</span></div>
                   </div>
                 </div>
               </div>
@@ -116,18 +115,18 @@ export function SolutionOverview() {
             <div className="rounded-full bg-indigo-50 w-12 h-12 flex items-center justify-center text-indigo-600 mb-6">
               <GitBranch className="h-6 w-6" />
             </div>
-            <h3 className="text-3xl font-bold text-slate-900 mb-4">Schema-Driven Pricing.</h3>
+            <h3 className="text-3xl font-bold text-slate-900 mb-4">Structured Pricing Models.</h3>
             <p className="text-lg text-slate-600 leading-relaxed mb-6">
-              Define plans, meters, and tiers in code or JSON. Version control your pricing strategy just like your application code.
+              Define plans, meters, and tiers with explicit fields. Track pricing changes over time so you can explain what happened and when.
             </p>
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-slate-700">
                 <span className="h-2 w-2 rounded-full bg-indigo-500"></span>
-                Git-ops friendly
+                Versioned pricing changes
               </li>
               <li className="flex items-center gap-3 text-slate-700">
                 <span className="h-2 w-2 rounded-full bg-indigo-500"></span>
-                Type-safe definitions
+                Clear primitives (meters, tiers, intervals)
               </li>
             </ul>
           </motion.div>

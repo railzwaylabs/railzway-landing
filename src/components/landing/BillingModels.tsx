@@ -22,7 +22,7 @@ const models = [
   {
     title: "Flat Subscriptions",
     icon: Calendar,
-    description: "Handle upgrades, downgrades, and cancellations with proration support.",
+    description: "Model plan changes with clear lifecycle states. Proration workflows are in progress.",
     useCase: "Monthly retainers",
     color: "blue",
     className: "",
@@ -30,7 +30,7 @@ const models = [
   {
     title: "Tiered & Volume",
     icon: BarChart3,
-    description: "Graduated pricing (first 10GB free) or volume discounts configured in seconds.",
+    description: "Graduated pricing (first 10GB free) or volume discounts with explicit tiers.",
     useCase: "Enterprise deals",
     color: "slate",
     className: "lg:col-span-3",
@@ -54,7 +54,7 @@ export function BillingModels() {
           Unified Billing Models
         </h2>
         <p className="mt-4 text-lg text-slate-600">
-          Support complex pricing strategies without complex code.
+          Model pricing strategies with clear primitives.
         </p>
       </div>
 

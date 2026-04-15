@@ -1,10 +1,7 @@
 import {
-  apiReferenceUrl,
   architectureUrl,
-  changelogUrl,
   docsIndexUrl,
   githubUrl,
-  securityUrl,
 } from "../../lib/env";
 
 const sections = [
@@ -16,17 +13,12 @@ const sections = [
   {
     href: "/docs/concepts",
     title: "Core Concepts",
-    description: "Determinism, billing cycles, and append-only financial intent.",
+    description: "Billing cycles, usage aggregation, and pricing foundations.",
   },
   {
     href: "/docs/architecture",
     title: "Architecture",
     description: "Trust boundaries, planes, and what Railzway intentionally does not do.",
-  },
-  {
-    href: "/docs/api-reference",
-    title: "API Reference",
-    description: "OpenAPI source of truth for endpoints and payload shapes.",
   },
 ];
 
@@ -41,8 +33,8 @@ export function DocsOverviewPage() {
           Railzway Docs
         </h1>
         <p className="max-w-3xl text-lg leading-relaxed text-slate-600">
-          Railzway is an engineering-first billing engine. These docs prioritize correctness,
-          determinism, and auditability over marketing narratives.
+          Railzway is an engineering-first billing engine. These docs focus on billing primitives,
+          operating boundaries, and practical implementation notes.
         </p>
       </div>
 
@@ -72,15 +64,6 @@ export function DocsOverviewPage() {
           <a className="rounded-full bg-white px-3 py-1.5 font-medium text-slate-700 hover:bg-slate-100" href={architectureUrl}>
             Architecture.md
           </a>
-          <a className="rounded-full bg-white px-3 py-1.5 font-medium text-slate-700 hover:bg-slate-100" href={apiReferenceUrl}>
-            swagger.yaml
-          </a>
-          <a className="rounded-full bg-white px-3 py-1.5 font-medium text-slate-700 hover:bg-slate-100" href={securityUrl}>
-            SECURITY.md
-          </a>
-          <a className="rounded-full bg-white px-3 py-1.5 font-medium text-slate-700 hover:bg-slate-100" href={changelogUrl}>
-            CHANGELOG.md
-          </a>
           <a className="rounded-full bg-white px-3 py-1.5 font-medium text-slate-700 hover:bg-slate-100" href={githubUrl}>
             Repository
           </a>
@@ -89,4 +72,3 @@ export function DocsOverviewPage() {
     </div>
   );
 }
-

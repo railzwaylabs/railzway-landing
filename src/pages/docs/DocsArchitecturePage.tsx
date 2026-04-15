@@ -2,7 +2,7 @@ import { architectureUrl, deploymentUrl, docsNotPaymentsUrl, threatModelUrl } fr
 
 const architecturePoints = [
   "Billing is isolated from payment execution.",
-  "Computation is deterministic and derived from persisted inputs.",
+  "Computation is repeatable and derived from persisted inputs.",
   "Trust boundaries are explicit: ingestion, control plane, and invoicing.",
   "Operational workflows (FinOps, billing operations) are modeled as first-class domains.",
 ];
@@ -64,4 +64,3 @@ export function DocsArchitecturePage() {
     </div>
   );
 }
-

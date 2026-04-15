@@ -6,7 +6,7 @@ export function TrustBadges() {
     <Section className="border-t border-slate-200 bg-slate-50">
       <div className="text-center max-w-2xl mx-auto mb-12">
         <h2 className="text-2xl font-bold tracking-tight text-slate-900 font-serif">
-          Audit-Ready Billing
+          Audit-Friendly Billing
         </h2>
       </div>
 

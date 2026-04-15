@@ -5,7 +5,6 @@ import {
   githubIssuesUrl,
   githubUrl,
   loginUrl,
-  salesMailto,
   signupUrl,
   supportMailto,
 } from "../lib/env";
@@ -41,7 +40,7 @@ export function LandingLayout({ children }: LandingLayoutProps) {
             <a href="/#features" className="hover:text-indigo-600 transition-colors">Features</a>
             <a href="/#models" className="hover:text-indigo-600 transition-colors">Billing Models</a>
             <a href="/#developers" className="hover:text-indigo-600 transition-colors">Developers</a>
-            <a href="/pricing" className="hover:text-indigo-600 transition-colors">Pricing</a>
+            <a href="/docs" className="hover:text-indigo-600 transition-colors">Docs</a>
           </nav>
           <div className="flex items-center gap-4">
             {isLoggedIn ? (
@@ -77,28 +76,25 @@ export function LandingLayout({ children }: LandingLayoutProps) {
                 Railzway
               </div>
               <p className="text-sm text-slate-500 max-w-xs">
-                The open-source billing engine for high-growth SaaS. Deterministic, audit-ready, and developer-first.
+                The open-source billing engine for SaaS teams. Built for clear billing primitives and evolving workflows.
               </p>
             </div>
             <div>
               <h4 className="font-semibold text-slate-900 mb-4">Product</h4>
               <ul className="space-y-2 text-sm text-slate-600">
                 <li><a href="/#features" className="hover:text-indigo-600">Features</a></li>
-                <li><a href="/docs/integrations" className="hover:text-indigo-600">Integrations</a></li>
-                <li><a href={salesMailto} className="hover:text-indigo-600">Enterprise</a></li>
-                <li><a href="/docs/changelog" className="hover:text-indigo-600">Changelog</a></li>
+                <li><a href="/#models" className="hover:text-indigo-600">Billing Models</a></li>
+                <li><a href="/#developers" className="hover:text-indigo-600">Developers</a></li>
+                <li><a href="/docs" className="hover:text-indigo-600">Documentation</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold text-slate-900 mb-4">Resources</h4>
               <ul className="space-y-2 text-sm text-slate-600">
-                <li><a href="/docs" className="hover:text-indigo-600">Documentation</a></li>
-                <li><a href="/docs/api-reference" className="hover:text-indigo-600">API Reference</a></li>
+                <li><a href="/docs" className="hover:text-indigo-600">Docs</a></li>
                 <li><a href={githubIssuesUrl} className="hover:text-indigo-600">Community</a></li>
                 <li><a href={githubUrl} className="hover:text-indigo-600">GitHub</a></li>
                 <li><a href={supportMailto} className="hover:text-indigo-600">Support</a></li>
-                <li><a href="/contact" className="hover:text-indigo-600">Contact Us</a></li>
-                <li><a href={salesMailto} className="hover:text-indigo-600">Contact Sales</a></li>
               </ul>
             </div>
             <div>
@@ -106,7 +102,7 @@ export function LandingLayout({ children }: LandingLayoutProps) {
               <ul className="space-y-2 text-sm text-slate-600">
                 <li><span className="text-slate-400">Privacy (Coming Soon)</span></li>
                 <li><span className="text-slate-400">Terms (Coming Soon)</span></li>
-                <li><a href="/docs/security" className="hover:text-indigo-600">Security</a></li>
+                <li><span className="text-slate-400">Security (Coming Soon)</span></li>
               </ul>
             </div>
           </div>

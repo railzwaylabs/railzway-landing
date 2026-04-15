@@ -7,130 +7,115 @@ type Availability = "check" | "x" | string;
 interface Row {
   feature: string;
   oss: Availability;
-  pro: Availability;
   cloud: Availability;
 }
 
 const rows: Row[] = [
   {
-    feature: "Subscription lifecycle states",
+    feature: "Organization-scoped isolation",
     oss: "check",
-    pro: "check",
     cloud: "check",
   },
   {
-    feature: "Idempotent usage ingestion",
+    feature: "Customers & subscriptions",
     oss: "check",
-    pro: "check",
     cloud: "check",
   },
   {
-    feature: "Reproducible aggregation",
+    feature: "Meters & usage ingestion",
     oss: "check",
-    pro: "check",
     cloud: "check",
   },
   {
-    feature: "Pricing models (flat, tiered, hybrid)",
+    feature: "Rating results & usage aggregates",
     oss: "check",
-    pro: "check",
     cloud: "check",
   },
   {
-    feature: "Billing cycles as first-class",
+    feature: "Pricing models (flat, usage, tiered)",
     oss: "check",
-    pro: "check",
     cloud: "check",
   },
   {
-    feature: "Invoicing state machine & proration",
+    feature: "Proration & invoice generation",
+    oss: "In progress",
+    cloud: "check",
+  },
+  {
+    feature: "Ledger posting",
     oss: "check",
-    pro: "check",
     cloud: "check",
   },
   {
-    feature: "Multi-tenant org isolation",
+    feature: "Products & features catalog",
     oss: "check",
-    pro: "check",
     cloud: "check",
   },
   {
-    feature: "Audit trail",
+    feature: "Audit logs",
     oss: "check",
-    pro: "check",
     cloud: "check",
   },
   {
-    feature: "Billing Operations workflows",
-    oss: "x",
-    pro: "check",
-    cloud: "check",
-  },
-  {
-    feature: "Audit log export (CSV/JSON)",
-    oss: "x",
-    pro: "check",
-    cloud: "check",
-  },
-  {
-    feature: "Revenue forecasting & exposure analysis",
-    oss: "x",
-    pro: "check",
-    cloud: "check",
-  },
-  {
-    feature: "Payment provider adapters",
+    feature: "API keys with scopes + IP/domain rules",
     oss: "check",
-    pro: "check",
+    cloud: "check",
+  },
+  {
+    feature: "Public API (API key auth)",
+    oss: "Stable",
+    cloud: "check",
+  },
+  {
+    feature: "Test clock",
+    oss: "check",
+    cloud: "check",
+  },
+  {
+    feature: "Tax rate configuration",
+    oss: "check",
     cloud: "check",
   },
   {
     feature: "Entitlements driven by billing",
     oss: "check",
-    pro: "check",
     cloud: "check",
   },
   {
-    feature: "Tax behavior configuration",
-    oss: "check",
-    pro: "check",
+    feature: "Payment provider adapters",
+    oss: "Planned",
     cloud: "check",
   },
   {
     feature: "Control plane operations",
     oss: "You manage",
-    pro: "You manage",
     cloud: "Fully managed",
   },
   {
     feature: "Offline license",
     oss: "x",
-    pro: "Available",
     cloud: "N/A",
   },
   {
     feature: "SLA & priority support",
     oss: "Best effort",
-    pro: "Included",
     cloud: "-",
   },
   {
     feature: "Updates",
     oss: "Manual",
-    pro: "Manual",
     cloud: "Automatic",
   },
 ];
 
 const baseCellClasses = "px-6 py-4 text-center border-l border-slate-200 min-w-[170px]";
-const proCellClasses = `${baseCellClasses} bg-amber-50/10`;
 const cloudCellClasses = `${baseCellClasses} bg-indigo-50/10`;
 const featureHeaderClasses =
   "px-6 py-4 font-semibold text-left min-w-[220px] sticky left-0 z-30 bg-slate-50 border-r border-slate-200";
 const featureCellClasses =
   "px-6 py-4 font-medium text-slate-700 sticky left-0 z-20 bg-white border-r border-slate-200";
 
-function renderCell(value: Availability, className: string, emphasis?: "pro" | "cloud") {
+function renderCell(value: Availability, className: string, emphasis?: "cloud") {
   if (value === "check") {
     return (
       <td className={className}>
@@ -146,9 +131,7 @@ function renderCell(value: Availability, className: string, emphasis?: "pro" | "
     );
   }
   const emphasisClasses =
-    emphasis === "pro" && (value === "Available" || value === "Included")
-      ? "text-amber-700 font-medium"
-      : emphasis === "cloud" && (value === "Fully managed" || value === "Automatic")
+    emphasis === "cloud" && (value === "Fully managed" || value === "Automatic")
         ? "text-indigo-700 font-medium"
         : "text-slate-600";
 
@@ -178,9 +161,6 @@ export function ComparisonTable() {
               <th className="px-6 py-4 font-semibold text-center border-l border-slate-200 min-w-[170px]">
                 Community OSS
               </th>
-              <th className="px-6 py-4 font-semibold text-center border-l border-slate-200 min-w-[170px] bg-amber-50/50 text-amber-900">
-                Self-Hosted Pro
-              </th>
               <th className="px-6 py-4 font-semibold text-center border-l border-slate-200 min-w-[170px] bg-indigo-50/50 text-indigo-900">
                 Railzway Cloud{" "}
                 <span className="block text-xs font-normal text-indigo-700 mt-1">
@@ -194,7 +174,6 @@ export function ComparisonTable() {
                 <tr key={row.feature}>
                   <td className={featureCellClasses}>{row.feature}</td>
                   {renderCell(row.oss, baseCellClasses)}
-                  {renderCell(row.pro, proCellClasses, "pro")}
                   {renderCell(row.cloud, cloudCellClasses, "cloud")}
                 </tr>
               ))}

@@ -10,8 +10,8 @@ import {
 const concepts = [
   {
     href: docsDeterminismUrl,
-    title: "Deterministic computation",
-    description: "Given the same inputs, the engine produces the same invoice outputs.",
+    title: "Repeatable computation",
+    description: "Given the same inputs, the engine produces the same billing outputs.",
   },
   {
     href: docsBillingCycleUrl,
@@ -71,4 +71,3 @@ export function DocsConceptsPage() {
     </div>
   );
 }
-
